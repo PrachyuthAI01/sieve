@@ -1,0 +1,37 @@
+A tuple (a,b,c) is considered good if it consists of three prime numbers a, b and c such that a<b<c≤N and a+b=c.
+Two tuples are considered different if they differ in at least one position. Given N, find the number of good tuples that can be formed by integers from 11 to N.
+Input
+•	The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+•	The following T lines contain a single integer N.
+Output
+For each test case, print a single line containing one integer — the number of good tuples which can be formed using integers from 1 to N.
+Constraints
+•	1≤T≤10^5
+•	1≤N≤10^6
+
+Input:
+2
+3
+6
+
+Output:
+0
+1
+solution:
+
+for _ in range(int(input())):
+    n=int(input())
+    v=[1]*(n+1)
+    i=2
+    v[0]=0
+    v[1]=0
+    while (i * i <= n):
+        if (v[i] == 1):
+            for i in range(i * i, n+1, i):
+                v[i] = 0
+        i += 1
+    c=0
+    for i in range(2,n+1):
+        if v[i]==1:
+            if(v[i-2]==1):c+=1
+    print(c)
